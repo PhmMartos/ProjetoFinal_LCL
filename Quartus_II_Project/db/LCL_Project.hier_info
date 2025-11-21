@@ -1,0 +1,156 @@
+|Time_Bomb
+CLOCK_50 => CLOCK_50.IN2
+KEY[0] => _.IN1
+KEY[1] => _.IN1
+KEY[2] => ~NO_FANOUT~
+KEY[3] => ~NO_FANOUT~
+HEX3[0] <= Segment_Display_7:DISP_MIN.hex
+HEX3[1] <= Segment_Display_7:DISP_MIN.hex
+HEX3[2] <= Segment_Display_7:DISP_MIN.hex
+HEX3[3] <= Segment_Display_7:DISP_MIN.hex
+HEX3[4] <= Segment_Display_7:DISP_MIN.hex
+HEX3[5] <= Segment_Display_7:DISP_MIN.hex
+HEX3[6] <= Segment_Display_7:DISP_MIN.hex
+HEX2[0] <= Segment_Display_7:DISP_SEG10.hex
+HEX2[1] <= Segment_Display_7:DISP_SEG10.hex
+HEX2[2] <= Segment_Display_7:DISP_SEG10.hex
+HEX2[3] <= Segment_Display_7:DISP_SEG10.hex
+HEX2[4] <= Segment_Display_7:DISP_SEG10.hex
+HEX2[5] <= Segment_Display_7:DISP_SEG10.hex
+HEX2[6] <= Segment_Display_7:DISP_SEG10.hex
+HEX1[0] <= Segment_Display_7:DISP_SEG1.hex
+HEX1[1] <= Segment_Display_7:DISP_SEG1.hex
+HEX1[2] <= Segment_Display_7:DISP_SEG1.hex
+HEX1[3] <= Segment_Display_7:DISP_SEG1.hex
+HEX1[4] <= Segment_Display_7:DISP_SEG1.hex
+HEX1[5] <= Segment_Display_7:DISP_SEG1.hex
+HEX1[6] <= Segment_Display_7:DISP_SEG1.hex
+HEX0[0] <= <VCC>
+HEX0[1] <= <VCC>
+HEX0[2] <= <VCC>
+HEX0[3] <= <VCC>
+HEX0[4] <= <VCC>
+HEX0[5] <= <VCC>
+HEX0[6] <= <VCC>
+
+
+|Time_Bomb|Freq_Div_1Hz:INST_DIVISOR
+clk => tick_1s~reg0.CLK
+clk => contador[0].CLK
+clk => contador[1].CLK
+clk => contador[2].CLK
+clk => contador[3].CLK
+clk => contador[4].CLK
+clk => contador[5].CLK
+clk => contador[6].CLK
+clk => contador[7].CLK
+clk => contador[8].CLK
+clk => contador[9].CLK
+clk => contador[10].CLK
+clk => contador[11].CLK
+clk => contador[12].CLK
+clk => contador[13].CLK
+clk => contador[14].CLK
+clk => contador[15].CLK
+clk => contador[16].CLK
+clk => contador[17].CLK
+clk => contador[18].CLK
+clk => contador[19].CLK
+clk => contador[20].CLK
+clk => contador[21].CLK
+clk => contador[22].CLK
+clk => contador[23].CLK
+clk => contador[24].CLK
+clk => contador[25].CLK
+tick_1s <= tick_1s~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Time_Bomb|Cronometer:INST_CRONOMETRO
+clk => contando.CLK
+clk => time_over~reg0.CLK
+clk => seg_unidade[0]~reg0.CLK
+clk => seg_unidade[1]~reg0.CLK
+clk => seg_unidade[2]~reg0.CLK
+clk => seg_unidade[3]~reg0.CLK
+clk => seg_dezena[0]~reg0.CLK
+clk => seg_dezena[1]~reg0.CLK
+clk => seg_dezena[2]~reg0.CLK
+clk => seg_dezena[3]~reg0.CLK
+clk => min_unidade[0]~reg0.CLK
+clk => min_unidade[1]~reg0.CLK
+clk => min_unidade[2]~reg0.CLK
+clk => min_unidade[3]~reg0.CLK
+reset => contando.ACLR
+reset => time_over~reg0.ACLR
+reset => seg_unidade[0]~reg0.PRESET
+reset => seg_unidade[1]~reg0.ACLR
+reset => seg_unidade[2]~reg0.ACLR
+reset => seg_unidade[3]~reg0.PRESET
+reset => seg_dezena[0]~reg0.PRESET
+reset => seg_dezena[1]~reg0.ACLR
+reset => seg_dezena[2]~reg0.PRESET
+reset => seg_dezena[3]~reg0.ACLR
+reset => min_unidade[0]~reg0.ACLR
+reset => min_unidade[1]~reg0.PRESET
+reset => min_unidade[2]~reg0.ACLR
+reset => min_unidade[3]~reg0.ACLR
+start => contando.OUTPUTSELECT
+game_won => contando.OUTPUTSELECT
+tick_1s => always0.IN1
+min_unidade[0] <= min_unidade[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+min_unidade[1] <= min_unidade[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+min_unidade[2] <= min_unidade[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+min_unidade[3] <= min_unidade[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg_dezena[0] <= seg_dezena[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg_dezena[1] <= seg_dezena[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg_dezena[2] <= seg_dezena[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg_dezena[3] <= seg_dezena[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg_unidade[0] <= seg_unidade[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg_unidade[1] <= seg_unidade[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg_unidade[2] <= seg_unidade[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg_unidade[3] <= seg_unidade[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+time_over <= time_over~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Time_Bomb|Segment_Display_7:DISP_MIN
+valor[0] => Decoder0.IN3
+valor[1] => Decoder0.IN2
+valor[2] => Decoder0.IN1
+valor[3] => Decoder0.IN0
+hex[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+hex[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+hex[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+hex[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+hex[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+hex[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+hex[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Time_Bomb|Segment_Display_7:DISP_SEG10
+valor[0] => Decoder0.IN3
+valor[1] => Decoder0.IN2
+valor[2] => Decoder0.IN1
+valor[3] => Decoder0.IN0
+hex[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+hex[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+hex[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+hex[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+hex[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+hex[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+hex[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Time_Bomb|Segment_Display_7:DISP_SEG1
+valor[0] => Decoder0.IN3
+valor[1] => Decoder0.IN2
+valor[2] => Decoder0.IN1
+valor[3] => Decoder0.IN0
+hex[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+hex[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+hex[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+hex[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+hex[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+hex[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+hex[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
