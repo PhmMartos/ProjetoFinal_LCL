@@ -1,11 +1,15 @@
 module Time_Bomb (
     input CLOCK_50,
     input [3:0] KEY,
+	 input [17:11] SW,
     output [6:0] HEX3,
     output [6:0] HEX2,
     output [6:0] HEX1,
     output [6:0] HEX0
 );
+    wire [3:0] Wire_A_Pin;
+    wire [2:0] Wire_B_Pin;
+    wire Wire_Done_Register;
 
     wire fio_tick_1s;
     wire [3:0] fio_min_u;
@@ -18,11 +22,22 @@ module Time_Bomb (
         .tick_1s(fio_tick_1s)
     );
 
+    Pin_Configuration INST_PIN_CONFIG (
+        .Clk(CLOCK_50),
+        .Reset(~KEY[2]),
+        .Start(~KEY[0]),
+        .Switches_A_Pin(SW[17:14]),
+        .Switches_B_Pin(SW[13:11]),
+        .A_Pin(Wire_A_Pin),
+        .B_Pin(Wire_B_Pin),
+        .Done_Register(Wire_Done_Register)
+    );
+
     // Instância do Cronômetro
     Cronometer INST_CRONOMETRO (
         .clk(CLOCK_50),
         .reset(~KEY[1]),
-        .start(~KEY[0]),
+        .start(Wire_Done_Register),
         .game_won(1'b0),
         .tick_1s(fio_tick_1s),
         .min_unidade(fio_min_u),
