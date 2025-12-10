@@ -1,23 +1,28 @@
-module Segment_Display_7(
-    input [3:0] valor , // Número 0 -> 9
-    output reg [7:0]hex // (dot,a,b,c,d,e,f,g)
+module Segment_Display_7 (
+    input [3:0] valor,
+    output reg [6:0] hex
 );
-
     always @(*) begin
         case (valor)
-
-            4'd0: hex = 8'b10000001; // 0
-            4'd1: hex = 8'b11110011; // 1
-            4'd2: hex = 8'b01001001; // 2
-            4'd3: hex = 8'b01100001; // 3
-            4'd4: hex = 8'b00110011; // 4
-            4'd5: hex = 8'b00100101; // 5
-            4'd6: hex = 8'b00000101; // 6
-            4'd7: hex = 8'b11110001; // 7
-            4'd8: hex = 8'b00000001; // 8
-            4'd9: hex = 8'b00100001; // 9
-
-            default: hex = 8'b11111111;
+            // Lógica invertida (0 = aceso na DE2)
+            // gfe_dcba
+            4'h0: hex = 7'b1000000;
+            4'h1: hex = 7'b1111001;
+            4'h2: hex = 7'b0100100;
+            4'h3: hex = 7'b0110000;
+            4'h4: hex = 7'b0011001;
+            4'h5: hex = 7'b0010010;
+            4'h6: hex = 7'b0000010;
+            4'h7: hex = 7'b1111000;
+            4'h8: hex = 7'b0000000;
+            4'h9: hex = 7'b0010000;
+            4'hA: hex = 7'b0001000;
+            4'hB: hex = 7'b0000011;
+            4'hC: hex = 7'b1000110;
+            4'hD: hex = 7'b0100001;
+            4'hE: hex = 7'b0000110;
+            4'hF: hex = 7'b0001110;
+            default: hex = 7'b1111111; // Apagado
         endcase
     end
 endmodule
