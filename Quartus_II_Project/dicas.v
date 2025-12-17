@@ -30,15 +30,15 @@ module dicas (
         if (fase_b_ativa == 0) begin
             // Analisando Senha A
             if (tentativa_a > senha_a) 
-                hex_maior_menor = 7'b1111001; // Acende segmento 'a' (Topo/Teto) -> MAIOR
+                hex_maior_menor = 7'b1001111; // Acende segmento 'a' (Topo/Teto) -> MAIOR
             else if (tentativa_a < senha_a)
-                hex_maior_menor = 7'1001111; // Acende segmento 'd' (Base/Chão) -> MENOR
+                hex_maior_menor = 7'b1111001; // Acende segmento 'd' (Base/Chão) -> MENOR
         end else begin
             // Analisando Senha B
             if (tentativa_b > senha_b) 
-                hex_maior_menor = 7'b1111001; // MAIOR
+                hex_maior_menor = 7'b1001111; // MAIOR
             else if (tentativa_b < senha_b)
-                hex_maior_menor = 7'b1001111; // MENOR
+                hex_maior_menor = 7'b1111001; // MENOR
         end
     end
 
